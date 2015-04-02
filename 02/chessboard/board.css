@@ -1,0 +1,16 @@
+#board{
+  display: inline-block;
+  width: 130px;
+  height: 130px;
+  line-height:0%;
+}
+
+#board span{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+
+.black{ background-color : black; }
+.white{ background-color : white; }
+.red  { background-color : red;   }
