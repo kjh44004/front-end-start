@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+  <meta charset="UTF-8">
+  <title>Search</title>
+</head>
+<body>
+  <input type = "text" id = "text"/>
+  <input type = "button" id = "Btn_Search" value = "검색" />
+
+<div id="wrap"> </div>
+
+<input type = "button" id = "Btn_More" value = "더보기" />
+
+<script type="text/template" id="listTemplate">
+  <ul>
+    <% for(var i=0; i<list.length; i++) { %>
+    <li>
+      <a href = <%= list[i].link %>><%= list[i].title %></a>
+    </li>
+    <%} %>
+  </ul>
+
+</script>
+
+<script type="text/javascript" src="JSON.js"></script>
+<script type="text/javascript" src="tmpl.js"></script>
+<script type="text/javascript" src="Search.js"></script>
+</body>
+</html>
