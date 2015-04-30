@@ -1,0 +1,19 @@
+#score_box{
+	height: 30px;
+	border: 1px solid black;
+	text-align:center	
+}
+
+#field{	
+	height: 600px;
+	border: 1px solid black;
+}
+
+#box{
+	width: 30px;
+	height: 30px;
+	background-color: red;
+	position: relative;
+	left: 40%;
+	top: 50%;
+}

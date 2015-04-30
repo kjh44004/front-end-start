@@ -1,10 +1,11 @@
 #btn_box {
   display: block;
-  width = 180px;
-  height = 10px;
+  width : 400px;
+  height : 30px;
+  vertical-align: center;
 }
-#btn_box button{
-  text-align: center;
+#btn_box span{
+  
   float:left;
   display: block;
   width: 18px;
@@ -12,3 +13,5 @@
 }
 #btn_left{ background: url(btn_map.gif) no-repeat 0px -50px; }
 #btn_right{ background: url(btn_map.gif) no-repeat 0px -25px; }
+
+#page_num{	}
