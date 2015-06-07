@@ -18,7 +18,7 @@ $board.html(doms.join(''));
 
 //시간제한
 var $countdown = $('#countdown');
-var time = 5;
+var time = 15;
 $countdown.html("TIME : " + time);
 
 var timeattack = setInterval(function(){
@@ -26,14 +26,15 @@ var timeattack = setInterval(function(){
 	time--;
 
 	$countdown.html("TIME : " + time);
-	console.log("TIME : " + time);
+	/*console.log("TIME : " + time);*/
 
+	//타임오버
 	if(time === 0){
 		clearInterval(timeattack);
 		opencount = 2; /*더이상 열리지 않도록 한다.*/
 		alert("fail");
 		$board.addClass("fail");
-		$board.css("text-indent","0px"); /*숨겼던 글자를 보여줌*/
+		$board.css("text-indent","0px"); /*숨겼던 글자를 보여줌 = 정답공개*/
 	}
 }, 1000);
 
@@ -51,9 +52,9 @@ $board.on('click', 'div', function(event){
 
 		var $card = $(event.currentTarget);
 
-		remember[opencount] = $card; console.log(remember[opencount]);
+		remember[opencount] = $card; /*console.log(remember[opencount]);*/
 
-		card_remember[opencount] = $card.html(); console.log(card_remember[opencount]);
+		card_remember[opencount] = $card.html(); /*console.log(card_remember[opencount]);*/
 
 		$card.addClass("open");
 
