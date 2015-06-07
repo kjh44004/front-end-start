@@ -7,13 +7,28 @@
 	height:100px;
 	background-color: green;
 	float:left;
-	margin:5px
+	margin:5px;
+	cursor: pointer;
+	font-size: 70px;
+	color: white;
+	text-align: center;
+	/*text-indent: -9999px; /*텍스트를 저멀리 옆으로 치워버림*/*/
+	overflow: hidden; /*저멀리 옆으로 치워버린 텍스트를 참조 불가능하게 숨김*/
 }
 
-#gameBoard .open {	
-	width:100px;
-	height:100px;
-	background-color: white;
-	float:left;
-	margin:5px
+#gameBoard .open {
+	text-indent:0px;
+	background-color: white;		
+	color: black;
 }
+
+#gameBoard .success {		
+	text-indent:0px;
+	background-color: white;		
+	color: red;
+}
+
+.fail {		
+	text-indent:0px; !important;
+}
+
