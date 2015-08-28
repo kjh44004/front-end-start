@@ -2,7 +2,7 @@ var make_board = function(){
 	var $board = $('#game_board_out');
 	
 	for(var i = 0; i<20; i++){
-		$board.append('<div id="box'+i+'" class = "board_outline">'+i+'</div>');
+		$board.append('<div id="box'+i+'" class = "board_outline"></div>');
 		if(i > 6 && i < 15){			
 			if(i%2 === 1){ $('#box'+i).css({'position':'relative', 'left':'400px', 'float':'left'}); }
 			else{$('#box'+i).css({'clear':'both'})}
@@ -12,7 +12,7 @@ var make_board = function(){
 	var $inboard = $('#game_board_in');
 
 	for(i=20; i<29; i++){
-		$inboard.append('<div id="box'+i+'" class = "board_inline">'+i+'</div>');
+		$inboard.append('<div id="box'+i+'" class = "board_inline"></div>');
 	}
 	
 	$('#box20').css({'left':'0px', 'float':'left'});

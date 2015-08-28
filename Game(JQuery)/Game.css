@@ -1,3 +1,11 @@
+#game_board{
+	margin: 0px;
+	padding: 0px;
+	width: 1000px;
+	height: 600px;	
+	float: left;
+}
+
 #stick_board{
 	margin: 0px;
 	padding: 0px;
@@ -6,22 +14,40 @@
 	float: left;
 }
 
-#stick_board div{
-	background-image: url("images/그림1.png"); 
+.stick{
+	margin: 0px 3px;
+	padding: 0px;	
 	background-size: 100%;
 	width: 50px;
 	height: 240px;
 	position: relative;
-	top:10%;
-	text-indent: -9999px;
+	top:10%;	 
 	float: left;
 }
 
-#stick_board button{		
+#player1_board{
+	margin: 0px;
+	padding: 0px;
 	position: relative;
-	top:100px;	
-	left:80px;
-	clear: both;
+	background-image: url("images/player_board.png"); 
+	background-size: 100%;
+	width: 200px;
+	height: 600px;	 
+	overflow: hidden;
+	display: block;
+	float: left;
+}
+
+#player2_board{
+	margin: 0px;
+	padding: 0px;
+	position: relative;
+	background-image: url("images/player_board.png"); 
+	background-size: 100%;
+	width: 200px;
+	height: 600px;	 
+	overflow: hidden;
+	display: block;
 }
 
 #game_board_out{
@@ -31,10 +57,10 @@
 	background-image: url("images/game_board.png"); 
 	background-size: 100%;
 	width: 600px;
-	height: 600px;	
-	text-indent: -9999px;
+	height: 600px;	 
 	overflow: hidden;
 	display: block;
+	float: left;
 }
 #game_board_in{		
 	margin: 0px;
@@ -44,7 +70,7 @@
 	left: 100px;
 	width: 400px;
 	height: 400px;	
-	text-indent: -9999px;
+	 
 	overflow: hidden;
 	display: block;
 }
@@ -53,9 +79,7 @@
 	padding: 0px;
 	width: 80px;
 	height: 80px;
-	text-indent: 0px;	
-	display: table-cell;
-	vertical-align:middle;
+	 		
 	text-align: center;
 	float: left;
 	display: block;
@@ -66,10 +90,50 @@
 	padding: 0px;
 	width: 80px;
 	height: 80px;
-	text-indent: 0px;
-	display: table-cell;
-	vertical-align:middle;	
+	 	
 	text-align: center;
 	float: left;
 	display: inline;
+}
+
+.player{
+	margin: 0px;
+	padding: 0px;
+	position: absolute;	
+	background-size: 60px;	
+	background-repeat: no-repeat;	
+	top:510px;
+	left: 510px;
+	width: 80px;
+	height: 80px;	
+}
+
+.draw_yout{
+	margin: 0px;	
+	border: 1px solid black;
+	border-color: rgba( 0, 0, 0, 0.5 );
+	color: black;
+	background-color: rgba( 255, 255, 255, 0.5 );	
+	position: relative;	
+	background-size: 100%;	
+	top: 150px;
+	left: 150px;
+	width: 300px;
+	height: 300px;
+	z-index:999;
+}
+
+#stick4 div{
+	margin: 0px 3px;
+	padding: 0px;	
+	background-size: 100%;
+	width: 50px;
+	height: 50px;
+	border: 1px solid black;
+	border-color: rgba( 0, 0, 0, 0.5 );
+	color: black;
+	background-color: rgba( 255, 255, 255, 0.5 );	
+	top:10%;
+	 
+	clear: both;
 }
