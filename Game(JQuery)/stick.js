@@ -1,23 +1,11 @@
-$('#stick_board').append('<button id="draw_btn">굴리기</button>');
-
-var player_turn = -1;
-var non_click = false;
-
-
-$('#draw_btn').on('click', function(event){	
-	if(non_click === false){
-		non_click = true;
-		$('#eventDiv').addClass('draw_yout');
-		$('#eventDiv').css({'background-image':'url("images/draw.gif")'});
-
-		setTimeout(draw_yout,2500);
-	}
-});
 
 var oneMoreTime = 0;
 
 /*윷을 던진 후 이벤트*/
 draw_yout = function(){
+
+	$('#eventDiv').css({'background-image':'url("")'});
+	$('#eventDiv').html("");
 
 	var draw_num = 0;							 /*윷을 던진 결과 변수*/
 	player_turn = player_turn + 1 - oneMoreTime; /*플레이어차례를 가리는 변수*/
@@ -74,7 +62,7 @@ draw_yout = function(){
 		$('#eventDiv').html("");
 		$('#eventDiv').removeClass('draw_yout');
 
-		moving_event(player_turn % 2, pieceNum, draw_num);
+		moving_trigger(player_turn % 2, pieceNum, draw_num);
 
 		if(draw_num === 4 || draw_num === 5) oneMoreTime = 1;
 	});	

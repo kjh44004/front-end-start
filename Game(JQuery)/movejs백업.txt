@@ -17,32 +17,50 @@ var moving = function (turn, piece, num){
 
 	var moving_count = 0;
 
-
-
 	for(var i = 0; i < num; i++){
-		locat[turn][piece] = move_num[move_change[turn][piece]][locat[turn][piece]]; /*ë§ì„ ë‹¤ìŒ ìœ„ì¹˜ë¡œ ë³€ê²½*/
-		moving_count ++;
+		locat[turn][piece] = move_num[move_change[turn][piece]][locat[turn][piece]]; /*¸»À» ´ÙÀ½ À§Ä¡·Î º¯°æ*/
 		
-		/*ë§ ì´ë™ ì• ë‹ˆë©”ì´ì…˜*/
-		$('#player'+turn+'_'+piece).animate({top : move_y[locat[turn][piece]], left : move_x[locat[turn][piece]]}, 400)
+		/*console.log(locat[turn][piece]);*/
 
-		/*ë§ë“¤ì˜ ì´ë™ë„ì¤‘ ì¶œë°œì§€ì ì— ë„ì°©í• ì‹œì— ì´ë²¤íŠ¸ì²˜ë¦¬*/		
-		if(locat[turn][piece] === 19){									
+		/*¸» ÀÌµ¿ ¾Ö´Ï¸ÞÀÌ¼Ç*/
+		$('#player'+turn+'_'+piece).animate({top : move_y[locat[turn][piece]], left : move_x[locat[turn][piece]]}, 400, function(){
+
+			/*console.log(locat[turn][piece]);*/
+
+			/*¸ðµç ¹«ºùÀÌ ³¡³ª¸é ÆË¾÷Ã¢À» ¶ç¿î´Ù*/
+			moving_count++;
+			if(moving_count === num){ popup_menu((turn+1)%2); }
+
+			
+			if(event_check[turn][piece] !== false){
+				$('#player'+ (turn+1)%2 + '_'+event_check[turn][piece]+'').css({'background-image':'url("")'});
+				$('#player'+ (turn+1)%2 + '_'+event_check[turn][piece]+'').animate({top : move_y[19], left : move_x[19]}, 1);			
+			}
+
+			if(goalin[turn][piece] === true){ $('#player'+turn+'_'+piece).css({'background-image':'url("")'}); }
+
+
+
+		}); /*¸»µéÀÇ ÀÌµ¿ ¾Ö´Ï¸ÞÀÌ¼Ç*/		
+
+
+		/*¸»µéÀÇ ÀÌµ¿µµÁß Ãâ¹ßÁöÁ¡¿¡ µµÂøÇÒ½Ã¿¡ ÀÌº¥Æ®Ã³¸®*/		
+		if(locat[turn][piece] === 19){ 
 			move_change[turn][piece] = 0;							
-			playerPiece[turn][piece] = false;			
-			goalin[turn][piece] = true;
-			break;
+			playerPiece[turn][piece] = false;
+			goalin[turn][piece] = true;			
+			console.log("µµÂø");
 		}		
 	}
 
-	if(locat[turn][piece] === 19){	
-		setTimeout(function(){
-			console.log("ë„ì°©");
-			$('#player'+turn+'_'+piece).css({'background-image':'url("")'});
-		}, 400 * moving_count);
-	}	
+	/*¹æÇâÀüÈ¯ÁöÁ¡À» ¹â¾ÒÀ»¶§ÀÇ ÀÌº¥Æ®Ã³¸®*/
+	switch(locat[turn][piece]){
+		case 0: move_change[turn][piece] = 1; break;
+		case 5: move_change[turn][piece] = 2; break;
+		case 24: move_change[turn][piece] = 1; break;
+	}
 	
-	/*ì—…ížŒë§ì´ ìž‡ì„ë•Œì˜ ì´ë²¤íŠ¸ì²˜ë¦¬*/
+	/*¾÷Èù¸»ÀÌ ÀÕÀ»¶§ÀÇ ÀÌº¥Æ®Ã³¸®*/
 	if(together_link[turn][piece] !== -1){
 		moving(turn, together_link[turn][piece], num);
 	}		
@@ -50,24 +68,18 @@ var moving = function (turn, piece, num){
 
 var moving_event = function(turn, piece, num){
 
-	/*ë°©í–¥ì „í™˜ì§€ì ì„ ë°Ÿì•˜ì„ë•Œì˜ ì´ë²¤íŠ¸ì²˜ë¦¬*/
-	switch(locat[turn][piece]){
-		case 0: move_change[turn][piece] = 1; break;
-		case 5: move_change[turn][piece] = 2; break;
-		case 24: move_change[turn][piece] = 1; break;
-	}
+	moving(turn, piece, num);
 
 	if(goalin[turn][piece] === false){
 	
-		/*ë„ì°©ì§€ì ì— ìƒëŒ€ì˜ ë§ì´ ìžˆëŠ”ì§€ ì²´í¬ ë° ì´ë²¤íŠ¸*/
-		for(var i = 0; i < 4; i++){		
+		/*µµÂøÁöÁ¡¿¡ »ó´ëÀÇ ¸»ÀÌ ÀÖ´ÂÁö Ã¼Å© ¹× ÀÌº¥Æ®*/
+		for(var i = 0; i < 4; i++){
+		
 			if((move_y[locat[turn][piece]] === move_y[locat[(turn+1)%2][i]]) && (move_x[locat[turn][piece]] === move_x[locat[(turn+1)%2][i]])){			
 				if(playerPiece[(turn+1)%2][i] == true){
 					locat[(turn+1)%2][i] = 19;
-					
-					console.log("ìž¡ì•—ë‹¤");
-					
-					$('#player'+ (turn+1)%2 + '_'+i+'').animate({top : move_y[19], left : move_x[19]}, 1).css({'background-image':'url("")'});
+
+					/*$('#player'+ (turn+1)%2 + '_'+i+'').css({'background-image':'url("")'});*/				
 
 					together[(turn+1)%2][i] = false;
 					together_link[(turn+1)%2][i] = -1;
@@ -78,10 +90,10 @@ var moving_event = function(turn, piece, num){
 
 					if(oneMoreTime !== 1) oneMoreTime = 1;
 				}
-			}		
+			}
+		
 		}
 
-		/*ë„ì°©ì§€ì ì— ì•„êµ°ì˜ ë§ì´ ìžˆëŠ”ì§€ ì²´í¬ ë° ì´ë²¤íŠ¸*/
 		for(var i = 0; i < 4; i++){
 			if(piece !== i){
 				if((move_y[locat[turn][piece]] === move_y[locat[turn][i]]) && (move_x[locat[turn][piece]] === move_x[locat[turn][i]])){				
@@ -91,20 +103,5 @@ var moving_event = function(turn, piece, num){
 			}
 		}
 	}
-}
-
-var moving_trigger = function(turn, piece, num){
-
-	moving(turn, piece, num);
-
-	setTimeout(function(){
-		moving_event(turn, piece, num);
-		popup_menu((turn+1)%2);
-	}, 400 * num);
-
-}
-
-/*	ëª¨ë“  ë¬´ë¹™ì´ ëë‚˜ë©´ íŒì—…ì°½ì„ ë„ìš´ë‹¤
-			moving_count++;
-			if(moving_count === num){ popup_menu((turn+1)%2); }*/
 		
+}

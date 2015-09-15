@@ -6,11 +6,23 @@
 	float: left;
 }
 
+.game_menu{
+	float: left;
+}
+
 #stick_board{
 	margin: 0px;
 	padding: 0px;
-	width: 250px;
-	height: 600px;	
+	width: 200px;
+	height: 350px;	
+	float: left;
+}
+
+#log_window{
+	margin: 0px;
+	padding: 0px;
+	width: 200px;
+	height: 350px;	
 	float: left;
 }
 
@@ -25,27 +37,27 @@
 	float: left;
 }
 
-#player1_board{
+#player0_board{
 	margin: 0px;
-	padding: 0px;
+	padding: 30px;
 	position: relative;
-	background-image: url("images/player_board.png"); 
+	background-image: url("images/player_board_off.png"); 
 	background-size: 100%;
-	width: 200px;
-	height: 600px;	 
+	width: 140px;
+	height: 190px;	 
 	overflow: hidden;
 	display: block;
-	float: left;
+	/*float: left;*/
 }
 
-#player2_board{
+#player1_board{
 	margin: 0px;
-	padding: 0px;
+	padding: 30px;
 	position: relative;
-	background-image: url("images/player_board.png"); 
+	background-image: url("images/player_board_off.png"); 
 	background-size: 100%;
-	width: 200px;
-	height: 600px;	 
+	width: 140px;
+	height: 190px;	 
 	overflow: hidden;
 	display: block;
 }
@@ -113,7 +125,7 @@
 	border: 1px solid black;
 	border-color: rgba( 0, 0, 0, 0.5 );
 	color: black;
-	background-color: rgba( 255, 255, 255, 0.5 );	
+	background-color: rgba( 255, 255, 255, 255);
 	position: relative;	
 	background-size: 100%;	
 	top: 150px;
@@ -136,4 +148,16 @@
 	top:10%;
 	 
 	clear: both;
+}
+
+.menu_btn{
+	margin-top: 190px;
+	width: 300px;
+	height: 110px;
+}
+
+#draw_btn{
+	margin-top: 190px;
+	width: 300px;
+	height: 110px;
 }
