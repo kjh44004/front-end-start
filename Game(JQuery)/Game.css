@@ -19,11 +19,15 @@
 }
 
 #log_window{
-	margin: 0px;
-	padding: 0px;
-	width: 200px;
-	height: 350px;	
+	margin: 5px;
+	padding: 5px;
+	width: 180px;
+	height: 310px;
+	overflow: auto;	
 	float: left;
+	font : bold 12px 고딕;	
+	background-image: url("images/log_window.png"); 
+	background-size: 100%;
 }
 
 .stick{
@@ -60,6 +64,23 @@
 	height: 190px;	 
 	overflow: hidden;
 	display: block;
+}
+
+.player_name{
+	display:table-cell;
+	text-align:center;
+	vertical-align:middle;
+	margin: 0px;
+	padding: 0px;
+	width: 140px;
+	height: 50px;	
+}
+
+.goalinBox{
+	padding: 5px;
+	width: 60px;
+	height: 60px;
+	float: left;
 }
 
 #game_board_out{
@@ -132,7 +153,7 @@
 	left: 150px;
 	width: 300px;
 	height: 300px;
-	z-index:999;
+	z-index:9999;
 }
 
 #stick4 div{
